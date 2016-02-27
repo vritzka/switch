@@ -1,0 +1,108 @@
+h1 {
+  margin-bottom:40px;
+}
+.cover-container {
+  margin-top:120px;
+}
+.nav-tabs {
+  width:240px;
+  margin: 0 auto 0 auto;
+  margin-bottom:20px;
+  
+}
+.site-wrapper-inner {
+  vertical-align:top;
+}
+.mainBox {
+  border:3px solid white;
+  border-radius:4px;
+  width:70%;
+  height:580px;
+  margin:auto;
+  position: relative;
+  background-color:black;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(33,33,33,1);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(33,33,33,1);
+  box-shadow: 10px 10px 5px 0px rgba(33,33,33,1);
+}
+.mainBox h4 {
+  position:absolute;
+  top:25px;
+  padding:10px;
+  margin:0;
+}
+.inContainer {
+    position: absolute;
+    width: 141px;
+    left: 30px;
+    cursor:pointer;  
+}
+.inContainer .do {
+    display: inline;
+    float: right;
+    width: 110px;
+    font-size: 12px;
+    line-height: 30px;
+    text-decoration: underline;
+}
+.input {
+    border: 2px solid gray;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 15px;
+    color: gray;
+    float: left;
+}
+#input1 {
+  top:110px;
+}
+#input2 {
+  top:210px;
+}
+#input3 {
+  top:310px;
+}
+#input4 {
+  top:410px;
+}
+.output {
+    border: 2px solid gray;
+    width: 80px;
+    height: 62px;
+    background-color: white;
+    position: absolute;
+    border-radius: 18px;
+    background-image: url('img/power_socket_us.jpg');
+    background-size: 100px 66px;
+    background-position: center;
+    -ms-transform: rotate(270deg); 
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+#output1 {
+  top:100px;
+  right:40px;
+}
+#output2 {
+  top:209px;
+  right:40px;
+}
+#output3 {
+  top:322px;
+  right:40px;
+}
+#output4 {
+  top:440px;
+  right:40px;
+}
+#l1 {
+  left:78px;
+  text-align:left;
+}
+#l2 {
+  right:55px;
+  text-align:right;
+}
+
+
