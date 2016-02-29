@@ -1,5 +1,5 @@
 #editor {
-  height:600px;
+  min-height:600px;
   width:600px;
   border:2px solid gray;
   background-color:#000000;
