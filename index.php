@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Probo</title>
+    <title>Device</title>
 
      <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -19,8 +19,9 @@
 
     <!-- Custom styles for this template -->
     <link href="http://getbootstrap.com/examples/cover/cover.css" rel="stylesheet">
-    <link href="custom.css" rel="stylesheet">
-    <link href="editor.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/editor.css" rel="stylesheet">
+    <link href="css/introjs.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -40,7 +41,7 @@
 
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand">Probo</h3>
+              <h3 class="masthead-brand" data-intro="Hello world! I'm Intro.js" data-step="1">The Device</h3>
               <nav>
                 <ul class="nav masthead-nav">
                   <li class="active"><a href="#">Home</a></li>
@@ -53,7 +54,7 @@
 
           <div class="inner cover">
             
-            <h1 class="cover-heading">Program your Probo.</h1>
+            <h1 class="cover-heading">Program your Device.</h1>
 
 
 <div>
@@ -62,7 +63,6 @@
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#device" aria-controls="device" role="tab" data-toggle="tab">Device</a></li>
     <li role="presentation"><a href="#rules" aria-controls="rules" role="tab" data-toggle="tab">Rules</a></li>
-    <li role="presentation"><a href="#rules" aria-controls="rules" role="tab" data-toggle="tab">Simulator</a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -95,23 +95,22 @@
               </div>              
               
               
-              <div class="output" id="output1"></div>
-              <div class="output" id="output2"></div>
-              <div class="output" id="output3"></div>
-              <div class="output" id="output4"></div>
+              <div class="output" id="output1"><span>1</span></div>
+              <div class="output" id="output2"><span>2</span></div>
+              <div class="output" id="output3"><span>3</span></div>
+              <div class="output" id="output4"><span>4</span></div>
             </div>      
-      
-      
-    
-    
+     
+      <button type="button" class="btn btn-info btn-xs" aria-label="Upload to Device" id="tutorialButton">
+        <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Show Tutorial
+      </button>
+
     </div>
     <div role="tabpanel" class="tab-pane" id="rules"><?php include('editor.php') ?></div>
   </div>
 
 </div>            
-            
-            
-            
+       
             
           </div>
 
@@ -141,6 +140,7 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
     <script src="js/jquery.timepicker.min.js"></script>
+    <script src="js/intro.min.js"></script>
     <script src="js/js.js"></script>
   </body>
 </html>

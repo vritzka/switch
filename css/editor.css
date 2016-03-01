@@ -1,0 +1,63 @@
+#editor {
+  min-height:600px;
+  border:2px solid gray;
+  background-color:#000000;
+  padding:8px;
+  text-align:left;
+  margin-bottom:20px;
+}
+
+.rule {
+  margin-bottom:15px;
+  margin-top:15px;
+  position:relative;
+}
+
+.b {
+  margin-left:25px;
+}
+
+.b > span.deleteRuleB {
+  position:absolute;
+  right:30px;
+  top:5px;
+}
+.then {
+  font-size:90%;
+  color:gray;
+  text-decoration:underline;
+  cursor:pointer;
+}
+#newRule {
+  margin: auto;
+  display: block;
+  margin-top: 40px;
+}
+#editor select {
+  font-size:16px;
+  margin-right:2px;
+}
+#editor .ruleContainer {
+  margin-top:25px;
+  padding-top: 15px;
+  border-top: 6px double gray;
+  position:relative;
+}
+#editor .ruleContainer:first-of-type {
+  margin-top:initial;
+  padding-top: initial;
+  border-top: initial;
+}
+#editor .a {
+  margin-top:10px;
+}
+.deleteRule {
+  cursor:pointer;
+  position:absolute;
+  right:5px;
+  top:5px;
+  z-index:1;
+}
+.deleteRuleB  {
+ cursor:pointer; 
+}

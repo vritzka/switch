@@ -2,16 +2,23 @@
 var app = {
   "initialize": function() {
   $(".do").each(function() {
-    $(this).html(app.drawSensorSelect());
+    $(this).html(app.drawMainBoxSensorSelect());
   })
 	
+$('a[href="#rules"]').on('show.bs.tab', function (e) {
+  app.saveSensors();
+	if(app.countSensors() < 1) {
+		return false;
+	}
+})	
+
 	$('#newRule').click(app.drawRuleA);
-    
+		    
 },
 	"sensors": {
 		"Temperature": {
 			"unit": "ºF",
-			"minValue": 0,
+			"minValue": 32,
 			"maxValue": 212,
 			"granularity": 3,
 			"values": []
@@ -20,7 +27,7 @@ var app = {
 			"unit": "%",
 			"minValue": 0,
 			"maxValue": 100,
-			"granularity": 1,
+			"granularity": 5,
 			"values": []
 		},
 		"Water Level": {
@@ -60,6 +67,7 @@ var app = {
 			"function": "timepicker"
 		}
 	},
+	"connectedSensors":[],
 	"outputs": {
 			"1": {
 				"name": "Output 1",
@@ -94,11 +102,39 @@ var app = {
 				}
 			}
 	},
+	"saveSensors": function() {
+		$('#device select.sensorSelect').each(function(index,value) {
+				app.connectedSensors[index] = $(this).val();
+		});
+	},
+	"countSensors": function() {
+		var count = 0;
+		$.each(app.connectedSensors, function(index,value) {
+			if(value != '0') {
+				count += 1;
+			}
+		})
+		return parseInt(count);
+	},
+  "drawMainBoxSensorSelect": function() {
+    
+    var out = '<select class="sensorSelect"><option value="0">Choose your Sensor</option>';
+    $.each(this.sensors, function(index,value) {
+			if(index != 'Time of Day') {
+				out = out+"<option value=\""+index+"\">"+index+"</option>";
+			}
+    })
+    out = out+"</select>";
+    
+    return out;
+  },	
   "drawSensorSelect": function() {
     
     var out = '<select class="sensorSelect"><option value="0">Which Sensor?</option>';
-    $.each(this.sensors, function(index,value) {
-      out = out+"<option value=\""+index+"\">"+index+"</option>";
+    $.each(this.connectedSensors, function(index,value) {
+			if(value != '0') {
+				out = out+"<option value=\""+value+"\">"+value+"</option>";
+			}
     })
     out = out+"</select>";
     
@@ -118,10 +154,16 @@ var app = {
   "drawUnitSelect": function(e,sensorName) {
 		
 		var triggerElement = e.delegateTarget;
+		
+		if(!$(triggerElement).siblings('.operandSelect').is(':visible')) {
+			$(triggerElement).siblings('.operandSelect').show();
+		}
     
-    var out = '<select class="unitSelect">';
+    var out = '<select class="unitSelect"><option value="-1">What?</option>';
 		
 		if(app.sensors[sensorName].values.length > 0) {
+			
+			$(triggerElement).siblings('.operandSelect').hide();
 			
 			$.each(app.sensors[sensorName].values, function( index, value ) {
   			out += '<option value="'+index+'">'+value+'</option>'
@@ -129,13 +171,13 @@ var app = {
 			
 		} else if( app.sensors[sensorName].function == 'timepicker' ) {
 			
+			$(triggerElement).siblings('.operandSelect').hide();
+			
 			$(triggerElement).parent('div').append($('<input class="time">'));
 			
-			$(triggerElement).parent('div').children('input.time').timepicker({ useSelect: true }).on('changeTime', function(e) {
+			$(triggerElement).parent('div').children('input.time').timepicker({ useSelect: true, step: 15 }).on('changeTime', function(e) {
     		app.drawRuleB(e);
 			});
-			
-			
 
 			return '';
 			
@@ -201,9 +243,15 @@ var app = {
     return out;
   },		
   "drawRuleA1": function(e) {
+		
+		var out = '';
     
-    var out = '<div class="rule a">If '+this.drawSensorSelect()+'<select><option>exceeds ></option><option>is less than < </option><option>equals or exceeds >=</option><option>equals or is less than <= </option><option>equals =</option></select></div>';
+    out = '<div class="ruleContainer"><span class="glyphicon glyphicon-remove-circle deleteRule" aria-hidden="true"></span><div class="rule a">';
+		
+		out += 'If '+this.drawSensorSelect()+'<select class="operandSelect"><option value="exceeds">exceeds ></option><option value="isBelow">is below < </option><option value="equalsOrExceeds">equals or exceeds >=</option><option value="equalsOrBelow">equals or is below <= </option><option value="equals">equals =</option></select></div>';
     
+		out += '</div>';
+		
     return out;
 
   },
@@ -221,9 +269,9 @@ var app = {
 		return out;
 		
 	},
-  "drawRuleB1": function(e) {
+  "drawRuleB1": function() {
     
-    var out = '<div class="rule b">'+this.drawOutputSelect();
+    var out = '<div class="rule b">'+app.drawOutputSelect();
 		
 		out += '</div>';
     
@@ -241,7 +289,14 @@ var app = {
   },
 	"drawRuleA": function() {
 		
+		if(app.countSensors() < 1) {
+			alert('First go back and connect at least one sensor');
+			return false;
+		}		
+		
 		var a1 = $(app.drawRuleA1());
+		
+		$(a1).children('span.deleteRule').click(app.deleteRule);
   
   	$('#newRule').before(a1);
     
@@ -249,7 +304,7 @@ var app = {
 			
 			var triggerElement = e.delegateTarget;
 			
-			$(triggerElement).siblings('.unitSelect').remove();
+			$(triggerElement).siblings('.unitSelect, .ui-timepicker-select, .time').remove();
     	
 			var sensorName = $(e.delegateTarget).val();
     
@@ -264,16 +319,22 @@ var app = {
 		
 		var triggerElement = e.delegateTarget;
 		
-		$(triggerElement).parent('div').next('div.b').remove();
+		if($(triggerElement).val() == '-1') {
+			$(triggerElement).parent('div').siblings('div.b, button').remove();
 			
-		var b1 = $(this.drawRuleB1());
+			return false;
+		}
+		
+		if($(triggerElement).parent('div').next('div.b').length > 0 ) {
+			return false;
+		}
+			
+		var b1 = $(app.drawRuleB1());
 		
 		b1.children().first().change(function(e) {
 			
-			b1.children('.actionSelect').remove();
-			b1.children('.hours').remove();
-			b1.children('.minutes').remove();
-			b1.children('.percentSelect').remove();
+			b1.children('.actionSelect, .hours, .minutes, .percentSelect').remove();
+			b1.next('button.btn-then').remove();
 			
 			var actionSelect = $(app.drawActionSelect(e)).change(function() {
 				b1.children('.percentSelect').remove();
@@ -283,11 +344,38 @@ var app = {
 			});
 			
 			b1.append(actionSelect);
+			
+			var thenButton = $('<button type="button" class="btn btn-primary btn-xs btn-then"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> then..</button>').click(app.drawRuleB);
+			
+			b1.after(thenButton);
 		
 		});
-  
-  	$(triggerElement).parent('div').after(b1)
+		
+		if($(triggerElement).hasClass('btn-then')) {
+			var deleteButton = $('<span class="glyphicon glyphicon-remove-circle deleteRuleB" aria-hidden="true"></span>').click(app.deleteRuleB);
+			b1.append(deleteButton);
+			$(triggerElement).after(b1);
+		} else {
+			$(triggerElement).parent('div').after(b1);
+		}
 
+	},
+	"deleteRule": function(e) {
+		
+		if(!confirm('Delete this Rule?')) {
+			return false;
+		}
+		var triggerElement = e.delegateTarget;
+		$(triggerElement).parent('div.ruleContainer').remove();
+	},
+	"deleteRuleB": function(e) {
+		
+		if(!confirm('Delete this Rule?')) {
+			return false;
+		}
+		var triggerElement = e.delegateTarget;
+		$(triggerElement).parent('div.b').next('button').remove();
+		$(triggerElement).parent('div.b').remove();
 		
 	}
   
