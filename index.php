@@ -31,6 +31,7 @@
   </head>
 
   <body>
+  <?php include("analyticstracking.php") ?>
 
     <div class="site-wrapper">
 

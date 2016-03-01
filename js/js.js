@@ -1,26 +1,41 @@
 
 var app = {
   "initialize": function() {
-  $(".do").each(function() {
-    $(this).html(app.drawMainBoxSensorSelect());
-  })
+		
+  $.each($(".do"), function() {
+		var sensorSelect = $(app.drawMainBoxSensorSelect()).change(function() {
+			ga('send', 'event', 'Interaction', 'Sensor Set', $(this).val())
+		})
+		$(this).append(sensorSelect)
+	})	
+	
 	
 	$('a[href="#rules"]').on('show.bs.tab', function (e) {
+		ga('send', 'event', 'Tab', '#rules')
   	app.saveSensors();
 		if(app.countSensors() < 1) {
-			alert('Please select at least 1 Sensor first!');
-			
+			ga('send', 'event', 'Error', 'First choose some Sensors')
+			alert('But first, please choose some Sensors!');
 			return false;
 		}
+	})
+	$('a[href="#device"]').on('show.bs.tab', function () {
+		ga('send', 'event', 'Tab', '#device')
 	})	
 
-	$('#tutorialButton').click(app.startTutorial);	
+	$('#tutorialButton').click(function() {
+		ga('send', 'event', 'Button', '#tutorialButton')
+		app.startTutorial()
+	})	
 
-	$('#newRule').click(app.drawRuleA);
+	$('#newRule').click(function() {
+		ga('send', 'event', 'Button', '#newRule')
+		app.drawRuleA()
+	})
 		
 		
 	if(document.cookie.indexOf('tutorialStarted') == -1) {
-		app.startTutorial();
+		app.startTutorial()
 	} 
 		    
 },
@@ -311,6 +326,8 @@ var app = {
     
   	$('#editor .rule:last-of-type > .sensorSelect').change(function(e) {
 			
+			ga('send', 'event', 'Editor', 'selected Sensor', $(this).val())
+			
 			var triggerElement = e.delegateTarget;
 			
 			$(triggerElement).siblings('.unitSelect, .ui-timepicker-select, .time').remove();
@@ -318,6 +335,7 @@ var app = {
 			var sensorName = $(e.delegateTarget).val();
     
     	$(triggerElement).next().after($(app.drawUnitSelect(e,sensorName)).change(function(e) {
+				ga('send', 'event', 'Editor', 'selected Unit', $(this).val())
 				app.drawRuleB(e);
 			}));
   
@@ -342,10 +360,13 @@ var app = {
 		
 		b1.children().first().change(function(e) {
 			
+			ga('send', 'event', 'Editor', 'selected Output', $(this).val())
+			
 			b1.children('.actionSelect, .hours, .minutes, .percentSelect').remove();
 			b1.next('button.btn-then').remove();
 			
 			var actionSelect = $(app.drawActionSelect(e)).change(function() {
+				ga('send', 'event', 'Editor', 'selected Action', $(this).val())
 				b1.children('.percentSelect').remove();
 				if($(this).val() == 'percent') {
 					$(this).after(app.drawPercentSelect());
@@ -354,7 +375,10 @@ var app = {
 			
 			b1.append(actionSelect);
 			
-			var thenButton = $('<button type="button" class="btn btn-primary btn-xs btn-then"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> then..</button>').click(app.drawRuleB);
+			var thenButton = $('<button type="button" class="btn btn-primary btn-xs btn-then"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> then..</button>').click(function(e) {
+				ga('send', 'event', 'Editor', 'clicked then button')
+				app.drawRuleB(e)
+			});
 			
 			b1.after(thenButton);
 		
@@ -374,6 +398,9 @@ var app = {
 		if(!confirm('Delete this Rule?')) {
 			return false;
 		}
+		
+		ga('send', 'event', 'Button', 'deleteRule')
+		
 		var triggerElement = e.delegateTarget;
 		$(triggerElement).parent('div.ruleContainer').remove();
 	},
@@ -382,6 +409,9 @@ var app = {
 		if(!confirm('Delete this Rule?')) {
 			return false;
 		}
+		
+		ga('send', 'event', 'Button', 'deleteRuleB')
+		
 		var triggerElement = e.delegateTarget;
 		$(triggerElement).parent('div.b').next('button').remove();
 		$(triggerElement).parent('div.b').remove();
@@ -389,7 +419,9 @@ var app = {
 	},
 	"startTutorial": function() {
 		
-		//document.cookie="tutorialStarted=true; expires=Thu, 18 Dec 2018 12:00:00 UTC";
+		document.cookie="tutorialStarted=true; expires=Thu, 18 Dec 2018 12:00:00 UTC";
+		
+		ga('send', 'event', 'Tutorial', 'started');
 
 		introJs().onchange(function(targetElement) {
 
@@ -421,7 +453,10 @@ var app = {
 			
 			
 		}).oncomplete(function() {
-				$('ul.nav-tabs li a[href="#device"]').tab('show')
+				$('ul.nav-tabs li a[href="#device"]').tab('show');
+				ga('send', 'event', 'Tutorial', 'completed');
+		}).onexit(function() {
+  			ga('send', 'event', 'Tutorial', 'exited');
 		}).start();
 			
 	}
