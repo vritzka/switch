@@ -373,7 +373,7 @@ var app = {
 				}
 			});
 			
-			b1.append(actionSelect);
+			b1.append(actionSelect)
 			
 			var thenButton = $('<button type="button" class="btn btn-primary btn-xs btn-then"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> then..</button>').click(function(e) {
 				ga('send', 'event', 'Editor', 'clicked then button')
