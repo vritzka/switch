@@ -197,6 +197,10 @@ li.ui-timepicker-selected .ui-timepicker-duration,
 	background: #f2f2f2;
 }
 
+a.introjs-button:focus {
+	color:#337ab7;
+	text-decoration:none;
+}
 
 /*Overwrites */
 @media (min-width: 768px) {

@@ -5,14 +5,23 @@ var app = {
     $(this).html(app.drawMainBoxSensorSelect());
   })
 	
-$('a[href="#rules"]').on('show.bs.tab', function (e) {
-  app.saveSensors();
-	if(app.countSensors() < 1) {
-		return false;
-	}
-})	
+	$('a[href="#rules"]').on('show.bs.tab', function (e) {
+  	app.saveSensors();
+		if(app.countSensors() < 1) {
+			alert('Please select at least 1 Sensor first!');
+			
+			return false;
+		}
+	})	
+
+	$('#tutorialButton').click(app.startTutorial);	
 
 	$('#newRule').click(app.drawRuleA);
+		
+		
+	if(document.cookie.indexOf('tutorialStarted') == -1) {
+		app.startTutorial();
+	} 
 		    
 },
 	"sensors": {
@@ -187,7 +196,7 @@ $('a[href="#rules"]').on('show.bs.tab', function (e) {
 			
 			while( currentValue <= app.sensors[sensorName].maxValue) {
 				
-				out += '<option>'+currentValue+' '+app.sensors[sensorName].unit+'</option>';
+				out += '<option value="'+currentValue+'">'+currentValue+' '+app.sensors[sensorName].unit+'</option>';
 				
 				currentValue += app.sensors[sensorName].granularity;
 				
@@ -377,6 +386,44 @@ $('a[href="#rules"]').on('show.bs.tab', function (e) {
 		$(triggerElement).parent('div.b').next('button').remove();
 		$(triggerElement).parent('div.b').remove();
 		
+	},
+	"startTutorial": function() {
+		
+		//document.cookie="tutorialStarted=true; expires=Thu, 18 Dec 2018 12:00:00 UTC";
+
+		introJs().onchange(function(targetElement) {
+
+  		if($(targetElement).attr('id') == 'input1') {
+				$('#input1 div.do select').val('Temperature');
+				$('#input2 div.do select').val('Humidity');
+			}
+			
+			if($(targetElement).attr('href') == '#rules') {
+				$('ul.nav-tabs li a[href="#rules"]').tab('show')
+			}
+			
+			if($(targetElement).attr('id') == 'newRule') {
+				$(targetElement).trigger('click');
+				$('div.a > select.sensorSelect').val('Temperature');
+				$('div.a > select.sensorSelect').trigger('change');
+				
+				$('div.a > select.unitSelect').val('83');
+				$('div.a > select.unitSelect').trigger('change');
+				
+				$('div.b > select.outputSelect').val('1');
+				$('div.b > select.outputSelect').trigger('change');
+				
+				$('div.b > select.actionSelect').val('1');
+				$('div.b > select.actionSelect').trigger('change');				
+				
+				
+			}			
+			
+			
+		}).oncomplete(function() {
+				$('ul.nav-tabs li a[href="#device"]').tab('show')
+		}).start();
+			
 	}
   
 }

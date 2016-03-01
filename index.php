@@ -41,7 +41,7 @@
 
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand" data-intro="Hello world! I'm Intro.js" data-step="1">The Device</h3>
+              <h3 class="masthead-brand">The Device</h3>
               <nav>
                 <ul class="nav masthead-nav">
                   <li class="active"><a href="#">Home</a></li>
@@ -54,7 +54,7 @@
 
           <div class="inner cover">
             
-            <h1 class="cover-heading">Program your Device.</h1>
+            <h1 class="cover-heading" data-intro="Hi there, thanks for trying this out!<br>I'll very quickly show you how it works. Please click 'next'." data-step="1" data-position="bottom-middle-aligned">Program your Device.</h1>
 
 
 <div>
@@ -62,50 +62,12 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#device" aria-controls="device" role="tab" data-toggle="tab">Device</a></li>
-    <li role="presentation"><a href="#rules" aria-controls="rules" role="tab" data-toggle="tab">Rules</a></li>
+    <li role="presentation"><a href="#rules" aria-controls="rules" role="tab" data-toggle="tab" data-step="4" data-position="top" data-intro="Now it's time to tell your device what to do.">Rules</a></li>
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="device">
-    
-    
-            <div class="mainBox">
-              <h4 id="l1">In</h4>
-              <h4 id="l2">Out</h4>
-              
-              <div class="inContainer" id="input1" data-inputId="1">
-                <div class="input">1</div>
-                <div class="do"></div>
-              </div>
-              
-              <div class="inContainer" id="input2" data-inputId="2">
-                <div class="input">2</div>
-                <div class="do"></div>
-              </div>
-              
-              <div class="inContainer" id="input3" data-inputId="3">
-                <div class="input">3</div>
-                <div class="do"></div>
-              </div>
-              
-              <div class="inContainer" id="input4" data-inputId="4">
-                <div class="input">4</div>
-                <div class="do"></div>
-              </div>              
-              
-              
-              <div class="output" id="output1"><span>1</span></div>
-              <div class="output" id="output2"><span>2</span></div>
-              <div class="output" id="output3"><span>3</span></div>
-              <div class="output" id="output4"><span>4</span></div>
-            </div>      
-     
-      <button type="button" class="btn btn-info btn-xs" aria-label="Upload to Device" id="tutorialButton">
-        <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Show Tutorial
-      </button>
-
-    </div>
+    <div role="tabpanel" class="tab-pane active" id="device"><?php include('device.php') ?></div>
     <div role="tabpanel" class="tab-pane" id="rules"><?php include('editor.php') ?></div>
   </div>
 
@@ -116,6 +78,7 @@
 
           <div class="mastfoot">
             <div class="inner">
+              <p>Have Ideas for this? <a href="http://www.rollitup.org/t/smart-fan-speed-controller-a-good-idea-or-nah.894719/" target="_blank">Join the discussion at Rollitup</a>.</p>
               <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
             </div>
           </div>

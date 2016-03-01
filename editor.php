@@ -1,5 +1,5 @@
 <div id="editor">
-<button type="button" class="btn btn-primary btn-xs" id="newRule"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Rule</button>
+<button type="button" class="btn btn-primary btn-xs" id="newRule" data-step="5" data-position="bottom" data-intro="Add rules with this button. I just created a rule that switches on your Output 1 (Fan) when it gets too warm.<br><br>Sweet, you completed this tutorial. Click 'Done' to go back to the first page and create your own setup. Post your thoughts on Rollitup."><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Rule</button>
 </div>
 
 <button type="button" class="btn btn-success" aria-label="Upload to Device" id="uploadButton" data-toggle="modal" data-target="#uploadModal">
