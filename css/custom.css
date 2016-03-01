@@ -7,6 +7,10 @@ h1 {
 .modal-content {
 	background-color:#5A5A5A;
 }
+.modal-footer {	
+	background-image: url('https://ohkrapp.files.wordpress.com/2008/10/south-park-imaginationland-poster.jpg');
+  background-position-y: 80%;
+}
 .cover-container {
   margin-top:120px;
 }
@@ -32,6 +36,13 @@ h1 {
   -webkit-box-shadow: 10px 10px 5px 0px rgba(33,33,33,1);
   -moz-box-shadow: 10px 10px 5px 0px rgba(33,33,33,1);
   box-shadow: 10px 10px 5px 0px rgba(33,33,33,1);
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#45484d+0,000000+100;Black+3D+%231 */
+	background: rgb(69,72,77); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(69,72,77,1) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+
 }
 .mainBox h4 {
   position:absolute;
