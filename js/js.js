@@ -91,7 +91,7 @@ var app = {
 			"function": "timepicker"
 		}
 	},
-	"connectedSensors":[],
+	"connectedSensors":["0","0","0","0","Time of Day"],
 	"outputs": {
 			"1": {
 				"name": "Output 1",
@@ -160,6 +160,7 @@ var app = {
 				out = out+"<option value=\""+value+"\">"+value+"</option>";
 			}
     })
+		
     out = out+"</select>";
     
     return out;
