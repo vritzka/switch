@@ -55,7 +55,16 @@
 
           <div class="inner cover">
             
-            <h1 class="cover-heading" data-intro="Hi there, thanks for trying this out!<br>I'll very quickly show you how it works. Please click 'next'." data-step="1" data-position="bottom-middle-aligned">Program your Device.</h1>
+            <h1 class="cover-heading glow" data-intro="Hi there, thanks for trying this out!<br>I'll very quickly show you how it works. Please click 'next'." data-step="1" data-position="bottom-middle-aligned">Program your Grow Room.</h1>
+            <h4>
+                Instead of many devices, you'll now need just one. 
+            </h4>
+            <h4>
+              And it'll do anything you tell it to. <small>Anything.</small>
+            </h4>
+            <p>
+              
+            </p>
 
 
 <div>
