@@ -52,7 +52,7 @@ h1 {
 }
 .inContainer {
     position: absolute;
-    width: 141px;
+    width: 160px;
     left: 30px;
     cursor:pointer;  
 }
@@ -69,7 +69,7 @@ h1 {
     width: 30px;
     height: 30px;
     background-color: white;
-    border-radius: 15px;
+    border-radius: 50%;
     color: gray;
     float: left;
 }
@@ -85,6 +85,23 @@ h1 {
 #input4 {
   top:410px;
 }
+#input5 {
+  top:300px;
+}
+.input.bnc {
+    background-image: url('../img/bnc-female.jpg');
+    background-size: 70px;
+    background-position: center;
+    width: 42px;
+    height: 42px;
+}
+.input.din {
+    background-image: url('../img/4-pin-din.png');
+    background-size: 77px;
+    background-position: center;
+    width: 45px;
+    height: 45px;
+}
 .output {
     border: 2px solid gray;
     width: 80px;
@@ -95,31 +112,38 @@ h1 {
     background-image: url('../img/power_socket_us.jpg');
     background-size: 100px 66px;
     background-position: center;
-    -ms-transform: rotate(270deg); 
-    -webkit-transform: rotate(270deg);
-    transform: rotate(270deg);
 }
 .output span {
-		font-size: 20px;
- 		top:-30px;
-		position:relative;		
+		font-size: 12px;
+    top: 37px;
+    left: -19px;
+    position: relative;
+    color: black;	
+}
+.output input {
+		font-size: 12px;
+    background-color: #353535;
+    color: #CECECE;
+    width: 76px;
+    position: relative;
+    top: 43px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    text-align: center;
 }
 #output1 {
   top:100px;
   right:40px;
 }
 #output2 {
-  top:209px;
+  top:219px;
   right:40px;
 }
 #output3 {
-  top:322px;
+  top:342px;
   right:40px;
 }
-#output4 {
-  top:440px;
-  right:40px;
-}
+
 #l1 {
   left:78px;
   text-align:left;

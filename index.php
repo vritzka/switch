@@ -80,6 +80,7 @@
           <div class="mastfoot">
             <div class="inner">
               <p>Have Ideas for this? <a href="http://www.rollitup.org/t/smart-fan-speed-controller-a-good-idea-or-nah.894719/" target="_blank">Join the discussion at Rollitup</a>.</p>
+              <p>by QVPark Products, +61 (0) 437 123 972, vritzka@gmail.com</p>
               <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
             </div>
           </div>
