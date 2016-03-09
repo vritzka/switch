@@ -3,6 +3,7 @@
 }
 h1 {
   margin-bottom:40px;
+	font-size:60px;
 }
 h1.glow {
 	color: #B6FF00;
@@ -18,7 +19,7 @@ h1.glow {
   background-position-y: 80%;
 }
 .cover-container {
-  margin-top:120px;
+  margin-top:40px;
 }
 .nav-tabs {
   width:147px;
