@@ -55,16 +55,18 @@
 
           <div class="inner cover">
             
-            <h1 class="cover-heading glow" data-intro="Hi there, thanks for trying this out!<br>I'll very quickly show you how it works. Please click 'next'." data-step="1" data-position="bottom-middle-aligned">Program your Grow Room.</h1>
-            <h4>
+            <h1 class="cover-heading glow" data-intro="Hi there, thanks for trying this out!<br>I'll very quickly show you how it works. Please click 'next'." data-step="1" data-position="bottom-middle-aligned">Program your Grow Room</h1>
+            
+            <h3>
                 Instead of many devices, you'll now need just one. 
-            </h4>
-            <h4>
-              And it'll do anything you tell it to. <small>Anything.</small>
-            </h4>
+            </h3>
+            
             <p>
-              
+            <button type="button" class="btn btn-success btn" aria-label="Show Tutorial" id="tutorialButton" style="margin-top:20px;">
+              <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Click to Learn how in 30 seconds.
+            </button>
             </p>
+            
 
 
 <div>
@@ -80,6 +82,8 @@
     <div role="tabpanel" class="tab-pane active" id="device"><?php include('device.php') ?></div>
     <div role="tabpanel" class="tab-pane" id="rules"><?php include('editor.php') ?></div>
   </div>
+  
+
 
 </div>            
        

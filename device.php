@@ -31,8 +31,4 @@
                 <span>3</span>
                 <input type="text" id="output3Name">
               </div>
-            </div>      
-     
-            <button type="button" class="btn btn-info btn-lg" aria-label="Show Tutorial" id="tutorialButton">
-              <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Learn how it works in 30 seconds
-            </button>
+            </div>
