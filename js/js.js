@@ -32,11 +32,6 @@ var app = {
 		ga('send', 'event', 'Button', '#newRule')
 		app.drawRuleA()
 	})
-		
-		
-	if(document.cookie.indexOf('tutorialStarted') == -1) {
-		app.startTutorial()
-	} 
 		    
 },
 	"sensors": {
