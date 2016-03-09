@@ -150,12 +150,9 @@ var app = {
   "drawSensorSelect": function() {
     
     var out = '<select class="sensorSelect"><option value="0">Which Sensor?</option>';
-    $.each(this.connectedSensors, function(index,value) {
-			if(value != '0') {
-				out = out+"<option value=\""+value+"\">"+value+"</option>";
-			}
+    $.each(this.sensors, function(index,value) {
+				out = out+"<option value=\""+index+"\">"+index+"</option>";
     })
-		
     out = out+"</select>";
     
     return out;
