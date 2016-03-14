@@ -1,3 +1,6 @@
+<?php
+phpinfo();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,7 +12,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Device</title>
+    <title>schalta</title>
 
      <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -58,7 +61,7 @@
             <h1 class="cover-heading glow" data-intro="Hi there, thanks for trying this out!<br>I'll very quickly show you how it works. Please click 'next'." data-step="1" data-position="bottom-middle-aligned">Program your Grow Room</h1>
             
             <h3>
-                Instead of many devices, you'll now need just one. 
+                Instead of many devices you'll need just one. 
             </h3>
             
             <p>
@@ -117,6 +120,7 @@
     
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/particle-api-js/5/particle.min.js"></script>
     <script src="js/jquery.timepicker.min.js"></script>
     <script src="js/intro.min.js"></script>
     <script src="js/js.js"></script>

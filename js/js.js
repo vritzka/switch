@@ -456,8 +456,52 @@ var app = {
   
 }
 
+//-------------PHOTON-----------------//
+
+var deviceCode = {
+	initialize: function() {
+		
+		particle = new Particle();
+		token = getCookie('token')
+		if(token === '') {
+			this.login();
+		}
+	
+	},
+	login: function() {
+		particle.login({username: 'vritzka@gmail.com', password: ''}).then(
+			function(data){
+				console.log('You were logged into Particle');
+				token = data.body.access_token
+				document.cookie='token='+token
+			},
+			function(err) {
+				console.log('API call completed on promise fail: ', err);
+			}
+		)	
+	}
+}
+
+//--------------HELPERS----------------//
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) === 0) return c.substring(name.length,c.length);
+    }
+    return "";
+}
+
+
+
 
 $( document ).ready(function() {
     app.initialize();
+		deviceCode.initialize();
 });
-  
+
+
+
