@@ -137,7 +137,7 @@ var app = {
 	},
   "drawMainBoxSensorSelect": function() {
     
-    var out = '<select class="sensorSelect"><option value="0">Choose your Sensor</option>';
+    var out = '<select name="sensor" class="sensorSelect"><option value="0">Choose your Sensor</option>';
     $.each(this.sensors, function(index,value) {
 			if(index != 'Time of Day') {
 				out = out+"<option value=\""+index+"\">"+index+"</option>";
@@ -149,7 +149,7 @@ var app = {
   },	
   "drawSensorSelect": function() {
     
-    var out = '<select class="sensorSelect"><option value="0">Which Sensor?</option>';
+    var out = '<select name="sensor" class="sensorSelect"><option value="0">Which Sensor?</option>';
     $.each(this.sensors, function(index,value) {
 				out = out+"<option value=\""+index+"\">"+index+"</option>";
     })
@@ -159,7 +159,7 @@ var app = {
   },
   "drawOutputSelect": function() {
     
-    var out = '<select class="outputSelect"><option value="0">Do what?</option>';
+    var out = '<select name="output" class="outputSelect"><option value="0">Do what?</option>';
     $.each(this.outputs, function(index,value) {
       out = out+"<option value=\""+index+"\">Switch "+value.name+"</option>";
     })
@@ -176,7 +176,7 @@ var app = {
 			$(triggerElement).siblings('.operandSelect').show();
 		}
     
-    var out = '<select class="unitSelect"><option value="-1">What?</option>';
+    var out = '<select name="unit" class="unitSelect"><option value="-1">What?</option>';
 		
 		if(app.sensors[sensorName].values.length > 0) {
 			
@@ -227,7 +227,7 @@ var app = {
 		
 		if(outputId == 'delay') {
 			
-			out = out+'<select class="hours">';
+			out = out+'<select name="delayHours" class="hours">';
 			
 			var h = 0;
 			while( h < 24 ) {
@@ -237,7 +237,7 @@ var app = {
 			out = out+ '</select>';
 			
 			
-			out = out+'<select class="minutes">';
+			out = out+'<select name="delayMinutes" class="minutes">';
 			
 			var m = 0;
 			while(m < 60) {
@@ -249,7 +249,7 @@ var app = {
 			
 		} else {
 			
-			out = out+'<select class="actionSelect">';
+			out = out+'<select name="action" class="actionSelect">';
 			
 			$.each(this.outputs[outputId].capabilities, function(index,value) {
 			 out = out+"<option value=\""+index+"\">"+value+"</option>";
@@ -265,7 +265,7 @@ var app = {
     
     out = '<div class="ruleContainer"><span class="glyphicon glyphicon-remove-circle deleteRule" aria-hidden="true"></span><div class="rule a">';
 		
-		out += 'If '+this.drawSensorSelect()+'<select class="operandSelect"><option value="exceeds">exceeds ></option><option value="isBelow">is below < </option><option value="equalsOrExceeds">equals or exceeds >=</option><option value="equalsOrBelow">equals or is below <= </option><option value="equals">equals =</option></select></div>';
+		out += 'If '+this.drawSensorSelect()+'<select name="operand" class="operandSelect"><option value="exceeds">exceeds ></option><option value="isBelow">is below < </option><option value="equalsOrExceeds">equals or exceeds >=</option><option value="equalsOrBelow">equals or is below <= </option><option value="equals">equals =</option></select></div>';
     
 		out += '</div>';
 		
@@ -274,7 +274,7 @@ var app = {
   },
 	"drawPercentSelect": function() {
 		
-		var out = '<select class="percentSelect">';
+		var out = '<select name="percent" class="percentSelect">';
 		var percent = 5;
 		while(percent <= 95) {
 			out = out+'<option value="'+percent+'">'+percent+'%</option>';
@@ -299,7 +299,7 @@ var app = {
 		
 		var triggerElement = e.delegateTarget;
     
-    var out = '<select><option>On</option><option>Off</option><option>to percent</option><option>delay</option></select>';
+    var out = '<select name="doWhat"><option>On</option><option>Off</option><option>to percent</option><option>delay</option></select>';
     
     return out;
 
@@ -476,9 +476,45 @@ var deviceCode = {
 				document.cookie='token='+token
 			},
 			function(err) {
-				console.log('API call completed on promise fail: ', err);
+				console.log('API call completed on promise fail: ', err)
 			}
 		)	
+	},
+	serializeRules: function() {
+		var c = 1;
+		var rules = '';
+		
+		$('#editor .ruleContainer').each(function(index,value) {
+			
+			$(this).find('select').each(function() {
+
+				rules = rules+$(this).attr('name')+'_'+c.toString()+'='+$(this).val()+'&';
+			})
+
+			c=c+1;
+			
+		})
+		return rules;
+	},
+	flash: function() {
+		
+		$.ajax({
+			url: 'php/flash.php',
+			method: 'post',
+			data: deviceCode.serializeRules(),
+			beforeSend: function( xhr ) {
+				//xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+				console.log(xhr);
+			}
+		})
+			.done(function( data ) {
+				if ( console && console.log ) {
+					console.log( "Sample of data:", data.slice( 0, 100 ) );
+				}
+			});		
+		
+		
+		
 	}
 }
 
