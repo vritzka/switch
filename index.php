@@ -80,13 +80,13 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#rules" aria-controls="rules" role="tab" data-toggle="tab" data-step="4" data-position="top" data-intro="Now it's time to tell your device what to do.">Rules</a></li>
-    <li role="presentation"><a href="#device" aria-controls="device" role="tab" data-toggle="tab">Device</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="rules"><?php include('editor.php') ?></div>
-    <div role="tabpanel" class="tab-pane" id="device"><?php include('device.php') ?></div>
+    <div role="tabpanel" class="tab-pane" id="settings"><?php include('settings.php') ?></div>
   </div>
   
 
