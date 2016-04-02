@@ -56,11 +56,16 @@
 
           <div class="inner cover">
             
-            <h1 class="cover-heading glow" data-intro="Hi there, thanks for trying this out!<br>I'll very quickly show you how it works. Please click 'next'." data-step="1" data-position="bottom-middle-aligned">Program your Grow Room</h1>
+            <h1 data-intro="Hi there, thanks for trying this out!<br>I'll very quickly show you how it works. Please click 'next'." data-step="1" data-position="bottom-middle-aligned">Program your Grow Room</h1>
             
             <h3>
-                Instead of many devices you'll need just one. 
+                Set rules for your electricals. 
             </h3>
+            
+            
+            <div>
+              <img src="img/device.png" style="height:311px">
+            </div>
             
             <p>
             <button type="button" class="btn btn-success btn" aria-label="Show Tutorial" id="tutorialButton" style="margin-top:20px;">
@@ -74,14 +79,14 @@
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#device" aria-controls="device" role="tab" data-toggle="tab">Device</a></li>
-    <li role="presentation"><a href="#rules" aria-controls="rules" role="tab" data-toggle="tab" data-step="4" data-position="top" data-intro="Now it's time to tell your device what to do.">Rules</a></li>
+    <li role="presentation" class="active"><a href="#rules" aria-controls="rules" role="tab" data-toggle="tab" data-step="4" data-position="top" data-intro="Now it's time to tell your device what to do.">Rules</a></li>
+    <li role="presentation"><a href="#device" aria-controls="device" role="tab" data-toggle="tab">Device</a></li>
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="device"><?php include('device.php') ?></div>
-    <div role="tabpanel" class="tab-pane" id="rules"><?php include('editor.php') ?></div>
+    <div role="tabpanel" class="tab-pane active" id="rules"><?php include('editor.php') ?></div>
+    <div role="tabpanel" class="tab-pane" id="device"><?php include('device.php') ?></div>
   </div>
   
 
