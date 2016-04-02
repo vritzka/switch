@@ -1,5 +1,6 @@
 {
     "require": {
-      "php": "^5.5.8"
+      "php": "^5.5.8",
+      "stormpath/sdk": "1.14.*"
     }
 }
