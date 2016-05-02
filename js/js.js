@@ -25,7 +25,7 @@ var app = {
 
 	$('#tutorialButton').click(function() {
 		ga('send', 'event', 'Button', '#tutorialButton')
-		app.startTutorial()
+		startIntro()
 	})	
 
 	$('#newRule').click(function() {
@@ -531,12 +531,25 @@ function getCookie(cname) {
     return "";
 }
 
-
+function getUrlVars() {
+	var vars = {};
+	var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+	vars[key] = value;
+	});
+	return vars;
+}
 
 
 $( document ).ready(function() {
     app.initialize();
-		deviceCode.initialize();
+		//deviceCode.initialize();
+	
+		if(getUrlVars().vocusupstart == 1) {
+			startIntro();
+		}
+	
+	
+	
 });
 
 

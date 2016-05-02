@@ -56,7 +56,7 @@
 
           <div class="inner cover">
             
-            <h1 data-intro="Hi there, thanks for trying this out!<br>I'll very quickly show you how it works. Please click 'next'." data-step="1" data-position="bottom-middle-aligned">Program your Grow Room</h1>
+            <h1 id="step1">Program your Grow Room</h1>
             
             <h3>
                 Set rules for your electricals. 
@@ -64,7 +64,7 @@
             
             
             <div>
-              <img src="img/device.png" style="height:311px">
+              <img src="img/device.png" style="height:311px" id="device">
             </div>
             
             <p>
@@ -127,5 +127,81 @@
     <script src="js/jquery.timepicker.min.js"></script>
     <script src="js/intro.min.js"></script>
     <script src="js/js.js"></script>
+    
+<script>
+  function startIntro(){
+        var intro = introJs();
+          intro.setOptions({
+            steps: [
+              { 
+                intro: "<div style=\"background-color:white;padding:7px;border-radius:5px;margin-bottom:10px;\"><img width=\"200\" src=\"/img/vocus_logo.png\"></div><p>Dear Vocus Upstart, thank you for visiting! Please click 'next' for a short introduction."
+              },
+              {
+                element: document.querySelector('#device'),
+                intro: "This is the device. A cloud connected powerstrip (cube). People have it at home and it connects to their Wifi.<br><br> It can then be programmed from this website. Here's how..."
+              },
+              {
+                element: document.querySelector('#newRule'),
+                intro: "Upon clicking this button, you can define rules for the device.<br>(Don't click it just yet.)",
+                position: 'right'
+              },
+              {
+                element: '#editor',
+                intro: 'I have now created a rule that tells the device to switch on outlet 1 if the temperature exceeds 83 Deg F.',
+                position: 'left'
+              },
+              {
+                element: '#newRule',
+                intro: "Add as many rules as needed.",
+                position: 'bottom'
+              },
+              {
+                element: '#uploadButton',
+                intro: 'Eventually, you can upload these rules to your devices. It will take 30 seconds or so and then your device is ready to go.',
+                position: 'top'
+              }
+            ]
+          }).onchange(function(targetElement) {
+
+        if($(targetElement).attr('id') == 'input1') {
+          $('#input1 div.do select').val('Temperature');
+          $('#input2 div.do select').val('Humidity');
+        }
+
+        if($(targetElement).attr('href') == '#rules') {
+          $('ul.nav-tabs li a[href="#rules"]').tab('show')
+        }
+
+        if($(targetElement).attr('id') == 'editor') {
+          $('#newRule').trigger('click');
+          $('div.a > select.sensorSelect').val('Temperature');
+          $('div.a > select.sensorSelect').trigger('change');
+
+          $('div.a > select.unitSelect').val('83');
+          $('div.a > select.unitSelect').trigger('change');
+
+          $('div.b > select.outputSelect').val('1');
+          $('div.b > select.outputSelect').trigger('change');
+
+          $('div.b > select.actionSelect').val('1');
+          $('div.b > select.actionSelect').trigger('change');				
+
+
+        }			
+			
+			
+		}).oncomplete(function() {
+				$('ul.nav-tabs li a[href="#device"]').tab('show');
+				ga('send', 'event', 'Tutorial', 'completed');
+		}).onexit(function() {
+  			ga('send', 'event', 'Tutorial', 'exited');
+		})
+          
+          
+          intro.start();
+      }    
+</script>    
+    
+    
   </body>
 </html>
