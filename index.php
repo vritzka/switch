@@ -64,7 +64,7 @@
             
             
             <div>
-              <img src="img/device.png" style="height:311px" id="device">
+              <img src="img/device.png" style="height:311px;margin-top:25px" id="device">
             </div>
             
             <p>
@@ -79,14 +79,14 @@
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#rules" aria-controls="rules" role="tab" data-toggle="tab" data-step="4" data-position="top" data-intro="Now it's time to tell your device what to do.">Rules</a></li>
-    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+    <li role="presentation" class="active"><a href="#rules" aria-controls="rules" role="tab" data-toggle="tab">Rules</a></li>
+    <li role="presentation"><a href="#monitoring" aria-controls="monitoring" role="tab" data-toggle="tab" id="tabM">Monitoring</a></li>
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="rules"><?php include('editor.php') ?></div>
-    <div role="tabpanel" class="tab-pane" id="settings"><?php include('settings.php') ?></div>
+    <div role="tabpanel" class="tab-pane" id="monitoring"><?php include('settings.php') ?></div>
   </div>
   
 
@@ -138,7 +138,7 @@
               },
               {
                 element: document.querySelector('#device'),
-                intro: "This is the device. A cloud connected powerstrip (cube). People have it at home and it connects to their Wifi.<br><br> It can then be programmed from this website. Here's how..."
+                intro: "This is the device. A cloud connected powerstrip (cube). People connect this to their Wifi.<br><br> It can then be programmed from this website. Here's how..."
               },
               {
                 element: document.querySelector('#newRule'),
@@ -147,19 +147,29 @@
               },
               {
                 element: '#editor',
-                intro: 'I have now created a rule that tells the device to switch on outlet 1 if the temperature exceeds 83 Deg F.',
+                intro: 'I have now created a rule that tells the device to switch on outlet 1 if the temperature exceeds 83 Deg F.<br><br>The user would most likely have a fan connected to outlet 1.',
                 position: 'left'
               },
               {
                 element: '#newRule',
-                intro: "Add as many rules as needed.",
+                intro: 'An unlimited number of rules can be created.',
                 position: 'bottom'
-              },
+              },							
               {
                 element: '#uploadButton',
-                intro: 'Eventually, you can upload these rules to your devices. It will take 30 seconds or so and then your device is ready to go.',
+                intro: 'Eventually, these rules get uploaded to the device.<br><br>No cable needed, all via the Internet and WiFi (over the air)',
                 position: 'top'
-              }
+              },
+              {
+                element: '#tabM',
+                intro: 'It\'s possible to monitor the device remotely. ',
+                position: 'top'
+              },
+              {
+                element: '#monitoring',
+                intro: 'This shows the current Temperature and Humidity at my desk in Perth.<br><br>This concludes the introduction. Thank you for taking the time.<br><br> Volker Ritzka<br>(vritzka@gmail.com)',
+                position: 'left'
+              },							
             ]
           }).onchange(function(targetElement) {
 
@@ -185,19 +195,20 @@
 
           $('div.b > select.actionSelect').val('1');
           $('div.b > select.actionSelect').trigger('change');				
-
-
-        }			
+        }	
+						
+				if($(targetElement).attr('id') == 'monitoring') {
+          $('#tabM').trigger('click')
+        }		
 			
 			
 		}).oncomplete(function() {
-				$('ul.nav-tabs li a[href="#device"]').tab('show');
-				ga('send', 'event', 'Tutorial', 'completed');
+				$('ul.nav-tabs li a[href="#rules"]').tab('show');
+				ga('send', 'event', 'Vocus Tutorial', 'completed');
 		}).onexit(function() {
-  			ga('send', 'event', 'Tutorial', 'exited');
+  			ga('send', 'event', 'Vocus Tutorial', 'exited');
 		})
-          
-          
+
           intro.start();
       }    
 </script>    

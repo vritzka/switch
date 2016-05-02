@@ -1,5 +1,1 @@
-<div class="mainBox">
-  <h3>
-       Settings       
-  </h3>
-</div>
+<iframe src="https://metrics.librato.com/s/public/87gr1qqz2" style="height:800px;width:1005px;"></iframe>
