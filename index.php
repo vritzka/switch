@@ -16,10 +16,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="http://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="http://getbootstrap.com/examples/cover/cover.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/examples/cover/cover.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/editor.css" rel="stylesheet">
     <link href="css/introjs.min.css" rel="stylesheet">
@@ -99,7 +99,7 @@
           <div class="mastfoot">
             <div class="inner">
               <p><a href="http://www.rollitup.org/t/smart-fan-speed-controller-a-good-idea-or-nah.894719/" target="_blank">Join the discussion at Rollitup</a>.</p>
-              <p>by QVPark, +61 (0) 437 123 972, vritzka@gmail.com</p>
+              <p>Contact: vritzka@gmail.com</p>
               <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
             </div>
           </div>
