@@ -1,7 +1,5 @@
 {
     "require": {
-      "php": "^5.5.8",
-      "stormpath/sdk": "1.14.*",
-        "twbs/bootstrap": "4.0.0-alpha.6"
+      "php": "^5.5.8"
     }
 }
