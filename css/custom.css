@@ -248,6 +248,17 @@ a.introjs-button:focus {
 	text-decoration:none;
 }
 
+/* Charts */
+
+.librato-display-media, .sdk-media-chart {
+    margin-top: 10px;
+}
+
+.sdk-media-chart div.big_number .big_number__title {
+	font-size:1.5rem !important
+}
+
+
 /*Overwrites */
 @media (min-width: 768px) {
 	.mastfoot {
@@ -255,12 +266,3 @@ a.introjs-button:focus {
 	}
 }
 
-/*animations*/
-@-webkit-keyframes neon4 {
-  from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #B6FF00, 0 0 70px #B6FF00, 0 0 80px #B6FF00, 0 0 100px #B6FF00, 0 0 150px #B6FF00;
-  }
-  to {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #B6FF00, 0 0 35px #B6FF00, 0 0 40px #B6FF00, 0 0 50px #B6FF00, 0 0 75px #B6FF00;
-  }
-}
