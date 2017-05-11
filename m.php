@@ -12,7 +12,7 @@
 
     <title>Smartphone Connected Grow Box</title>
 
-		<link rel="stylesheet" href="/bower_components/twbs/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="https://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -42,7 +42,7 @@
 
           <div class="inner cover">
  
-        <img src="/img/plants_in_tent.jpg" class="img-thumbnail" alt="Current Photo">
+        <img src="/img/in_box.jpg" class="img-fluid" alt="Current Photo">
             
 
             <div
