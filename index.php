@@ -136,7 +136,7 @@
           intro.setOptions({
             steps: [
               { 
-                intro: "<div style=\"background-color:white;padding:7px;border-radius:5px;margin-bottom:10px;\"><img width=\"200\" src=\"/img/vocus_logo.png\"></div><p>Dear Vocus Upstart, thank you for visiting! Please click 'next' for a short introduction."
+                intro: "<p>thank you for visiting! Please click 'next' for a short introduction."
               },
               {
                 element: document.querySelector('#device'),
@@ -169,7 +169,7 @@
               },
               {
                 element: '#monitoring',
-                intro: 'This shows the current Temperature and Humidity at my desk in Perth.<br><br>This concludes the introduction. Thank you for taking the time.<br><br> Volker Ritzka<br>(vritzka@gmail.com)',
+                intro: 'This shows the current Temperature and Humidity at my desk in Perth.<br><br>This concludes the introduction. Thank you for taking the time.',
                 position: 'left'
               },							
             ]
