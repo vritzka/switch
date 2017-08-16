@@ -18,7 +18,7 @@
     <link href="https://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="https://getbootstrap.com/examples/cover/cover.css" rel="stylesheet">
+    <link href="https://v4-alpha.getbootstrap.com/examples/cover/cover.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/editor.css" rel="stylesheet">
     <link href="css/introjs.min.css" rel="stylesheet">

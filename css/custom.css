@@ -1,6 +1,10 @@
 .masthead-nav, .masthead-brand {
 	display:none;
 }
+.masthead, .mastfoot, .cover-container {
+    width: 92rem;
+    max-width: 100%;
+}
 h1 {
   margin-bottom:40px;
 	font-size:48px;
@@ -255,7 +259,11 @@ a.introjs-button:focus {
 }
 
 .sdk-media-chart div.big_number .big_number__title {
-	font-size:1.5rem !important
+	font-size:3rem !important
+}
+
+.sdk-media-chart div.big_number .big_number__units {
+	font-size:2rem !important;
 }
 
 

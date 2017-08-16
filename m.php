@@ -42,7 +42,7 @@
 
           <div class="inner cover">
  
-        <img src="/img/in_box.jpg" class="img-fluid" alt="Current Photo">
+        <img src="/img/in_box.jpg" class="img-thumbnail" alt="Current Photo">
             
 
             <div
@@ -50,7 +50,7 @@
               data-chart_id='4216331'
               data-duration='3600'
               data-height='100'
-              data-width='100%'
+              data-width='80%'
               data-source='*'
             ></div>
             
@@ -59,7 +59,7 @@
               data-chart_id='4216330'
               data-duration='21600'
               data-height='200'
-              data-width='100%'
+              data-width='80%'
               data-source='*'
             ></div>
             
@@ -71,7 +71,7 @@
             data-chart_id='4216356'
             data-duration='3600'
             data-height='100'
-            data-width='100%'
+            data-width='80%'
             data-source='*'
           ></div>
             
@@ -80,7 +80,7 @@
           data-chart_id='4216357'
           data-duration='3600'
           data-height='200'
-          data-width='100%'
+          data-width='80%'
           data-source='*'
         ></div>
         
