@@ -40,6 +40,7 @@ var app = {
 			"minValue": 32,
 			"maxValue": 212,
 			"granularity": 3,
+			"decimals":0,
 			"values": []
 		},
 		"Humidity": {
@@ -47,20 +48,23 @@ var app = {
 			"minValue": 0,
 			"maxValue": 100,
 			"granularity": 5,
+			"decimals":0,
 			"values": []
 		},
 		"Water Level": {
 			"unit": "inch",
-			"minValue": 0,
-			"maxValue": 10,
-			"granularity": 1,
-			"values": []
+			"minValue": null,
+			"maxValue": null,
+			"granularity": null,
+			"decimals":null,
+			"values": ['High','Low']
 		},
 		"Light": {
 			"unit": "",
 			"minValue": null,
 			"maxValue": null,
 			"granularity": null,
+			"decimals":0,
 			"values": ["On", "Off"]
 		},
 		"CO2": {
@@ -68,20 +72,31 @@ var app = {
 			"minValue": 0,
 			"maxValue": 9999,
 			"granularity": 500,
+			"decimals":0,
 			"values": []
 		},
 		"PH": {
 			"unit": "",
 			"minValue": 0,
 			"maxValue": 14,
-			"granularity": 0.5,
+			"granularity": 0.1,
+			"decimals": 2,
 			"values": []
 		},
+		"EC": {
+			"unit": "ppm",
+			"minValue": 0,
+			"maxValue": 2000,
+			"granularity": 50,
+			"decimals": 0,
+			"values": []
+		},		
 		"Time of Day": {
 			"unit": null,
 			"minValue": null,
 			"maxValue": null,
 			"granularity": null,
+			"decimals": null,
 			"values": [],
 			"function": "timepicker"
 		}
@@ -89,7 +104,7 @@ var app = {
 	"connectedSensors":["0","0","0","0","Time of Day"],
 	"outputs": {
 			"1": {
-				"name": "Output 1",
+				"name": "PH UP Pump",
 				"capabilities": {
 					"1":"On",
 					"0":"Off",
@@ -97,7 +112,7 @@ var app = {
 				}
 			},
 			"2": {
-				"name": "Output 2",
+				"name": "PH Down Pump",
 				"capabilities": {
 					"1":"On",
 					"0":"Off",
@@ -105,7 +120,7 @@ var app = {
 				}
 			},
 			"3": {
-				"name": "Output 3",
+				"name": "Stir Pump",
 				"capabilities": {
 					"1":"On",
 					"0":"Off",
@@ -113,13 +128,51 @@ var app = {
 				}
 			},
 			"4": {
-				"name": "Output 4",
+				"name": "Flora Nova Bloom Pump",
 				"capabilities": {
 					"1":"On",
 					"0":"Off",
 					"percent":"Set to %"
 				}
-			}
+			},
+			"5": {
+				"name": "Bloom Booster Pump",
+				"capabilities": {
+					"1":"On",
+					"0":"Off",
+					"percent":"Set to %"
+				}
+			},
+			"6": {
+				"name": "Heater",
+				"capabilities": {
+					"1":"On",
+					"0":"Off",
+					"percent":"Set to %"
+				}
+			},
+			"7": {
+				"name": "Main Fan",
+				"capabilities": {
+					"1":"On",
+					"0":"Off",
+					"percent":"Set to %"
+				}
+			},
+			"8": {
+				"name": "Solenoid Valve",
+				"capabilities": {
+					"1":"Open",
+					"0":"Closed"
+				}
+			},		
+			"9": {
+				"name": "Send Message",
+				"capabilities": {
+					"percent":"Enter Text"
+				}				
+			}			
+		
 	},
 	"saveSensors": function() {
 		$('#device select.sensorSelect').each(function(index,value) {
@@ -161,7 +214,12 @@ var app = {
     
     var out = '<select name="output" class="outputSelect"><option value="0">Do what?</option>';
     $.each(this.outputs, function(index,value) {
-      out = out+"<option value=\""+index+"\">Switch "+value.name+"</option>";
+			if(index != 9) {
+				 out = out+"<option value=\""+index+"\">Switch "+value.name+"</option>";	 
+			} else {
+				 out = out+"<option value=\""+index+"\">"+value.name+"</option>";	 
+			}
+     
     })
 			out = out+"<option value=\"delay\">Wait for ...</option>";
     out = out+"</select>";
@@ -204,7 +262,7 @@ var app = {
 			
 			while( currentValue <= app.sensors[sensorName].maxValue) {
 				
-				out += '<option value="'+currentValue+'">'+currentValue+' '+app.sensors[sensorName].unit+'</option>';
+				out += '<option value="'+currentValue+'">'+currentValue.toFixed(app.sensors[sensorName].decimals)+' '+app.sensors[sensorName].unit+'</option>';
 				
 				currentValue += app.sensors[sensorName].granularity;
 				
@@ -239,7 +297,15 @@ var app = {
 			
 			out = out+'<select name="delayMinutes" class="minutes">';
 			
-			var m = 0;
+			var s = 10;
+			
+			while(s < 60) {
+				out = out+ '<option>'+s+' seconds</option>';
+				s += 10;
+			}			
+			
+			var m = 1;
+			
 			while(m < 60) {
 				out = out+ '<option>'+m+' minutes</option>';
 				m += 1;
